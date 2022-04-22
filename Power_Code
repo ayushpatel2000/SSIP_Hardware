@@ -1,0 +1,125 @@
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+const int sensorIn = A0;
+int mVperAmp = 66; // use 185 for 5A, 100 for 20A Module and 66 for 30A Module
+char wattop[5]={};
+double Voltage = 0;
+double VRMS = 0;
+double AmpsRMS = 0;
+const char *ssid =  "Ayush";     // replace with your wifi ssid and wpa2 key
+const char *pass =  "12345678";
+const char* mqtt_server = "192.168.67.253";
+const int mqtt_port = 1883;
+WiFiClient client1;
+PubSubClient client(client1);
+
+void setup(){ 
+      pinMode(A0, INPUT);
+      Serial.begin(9600);
+      delay(10);
+      Serial.println(F("Init...."));
+      Serial.println("Connecting to ");
+       Serial.println(ssid); 
+ 
+       WiFi.begin(ssid, pass); 
+       while (WiFi.status() != WL_CONNECTED) 
+          {
+            delay(500);
+            Serial.print(".");
+          }
+      Serial.println("");
+      Serial.println("WiFi connected"); 
+      client.setServer(mqtt_server, mqtt_port);
+      while (!client.connected()) 
+      {
+        Serial.println("Connecting to MQTT...");
+        if (client.connect("ESP8266","ayush","12345678"))
+        {
+          Serial.println("connected");
+        }
+        else
+        {
+          Serial.print("failed with state ");
+          Serial.println(client.state());
+          delay(2000);
+        }
+      }
+}
+int j=1;
+void loop(){
+ Voltage = getVPP();
+ VRMS = (Voltage/2.0) *0.707; // sq root
+ AmpsRMS = (VRMS * 1000)/mVperAmp;
+ float Wattage = (220*AmpsRMS)-12; //Observed 18-20 Watt when no load was connected, so substracting offset value to get real consumption.
+ Serial.print(AmpsRMS);
+ Serial.println(" Amps RMS ");
+ Serial.print(Wattage); 
+ Serial.println(" Watt ");
+ 
+if(Wattage > 50)
+{
+  j=1;
+ dtostrf(Wattage, 4, 2, wattop);
+ bool a = client.publish("/test", wattop);
+ if(a)
+ {
+  Serial.println("Published");
+  Serial.println(wattop);
+ }
+ else
+ {
+  Serial.println("Error");
+ }
+}
+else
+{
+  if(j==1)
+  {
+  bool a = client.publish("/test", "0");
+ if(a)
+ {
+  Serial.println("Published");
+  Serial.println("0");
+  j=0;
+ }
+ else
+ {
+  Serial.println("Error");
+ }
+  }
+}
+delay(3000);
+ client.loop();
+}
+
+float getVPP()
+{
+  float result;
+  
+  int readValue;             //value read from the sensor
+  int maxValue = 0;          // store max value here
+  int minValue = 1024;          // store min value here
+  
+   uint32_t start_time = millis();
+
+   while((millis()-start_time) < 1000) //sample for 1 Sec
+   {
+       readValue = analogRead(sensorIn);
+       // see if you have a new maxValue
+       if (readValue > maxValue) 
+       {
+           /*record the maximum sensor value*/
+           maxValue = readValue;
+       }
+       if (readValue < minValue) 
+       {
+           /*record the maximum sensor value*/
+           minValue = readValue;
+       }
+    }
+   
+   // Subtract min from max
+   result = ((maxValue - minValue) * 5)/1024.0;
+      
+   return result;
+ }
