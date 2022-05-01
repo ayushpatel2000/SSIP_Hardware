@@ -1,0 +1,740 @@
+[
+  {
+    "id": "5aaaa13.ece6d6",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "4b7d4ba8.a8564c",
+    "type": "ui_switch",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "label": "Relay2",
+    "tooltip": "",
+    "group": "4120bc84.e1bb74",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "",
+    "style": "",
+    "onvalue": "1",
+    "onvalueType": "num",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "0",
+    "offvalueType": "num",
+    "officon": "",
+    "offcolor": "",
+    "x": 440,
+    "y": 900,
+    "wires": [
+      [
+        "8f30456c.544c48"
+      ]
+    ]
+  },
+  {
+    "id": "1f4f9567.212d43",
+    "type": "ui_switch",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "label": "Relay3",
+    "tooltip": "",
+    "group": "4120bc84.e1bb74",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "",
+    "style": "",
+    "onvalue": "1",
+    "onvalueType": "num",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "0",
+    "offvalueType": "num",
+    "officon": "",
+    "offcolor": "",
+    "x": 440,
+    "y": 960,
+    "wires": [
+      [
+        "88835b52.e8fa68"
+      ]
+    ]
+  },
+  {
+    "id": "9560347b.8c717",
+    "type": "ui_switch",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "label": "Relay4",
+    "tooltip": "",
+    "group": "4120bc84.e1bb74",
+    "order": 3,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "",
+    "style": "",
+    "onvalue": "1",
+    "onvalueType": "num",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "0",
+    "offvalueType": "num",
+    "officon": "",
+    "offcolor": "",
+    "x": 440,
+    "y": 1020,
+    "wires": [
+      [
+        "716ff0bb.3f9c68"
+      ]
+    ]
+  },
+  {
+    "id": "8f30456c.544c48",
+    "type": "mqtt out",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "topic": "device2/relay2",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "b3f430bae7c63883",
+    "x": 640,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "88835b52.e8fa68",
+    "type": "mqtt out",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "topic": "device2/relay3",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "b3f430bae7c63883",
+    "x": 640,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "716ff0bb.3f9c68",
+    "type": "mqtt out",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "topic": "device2/relay4",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "b3f430bae7c63883",
+    "x": 640,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "d9fbd4b3ab59ae4a",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "MQTT Received",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "b5d8637b22e6ef48",
+    "type": "mqtt out",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "topic": "device2/relay1",
+    "qos": "2",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "text/plain",
+    "userProps": "user",
+    "correl": "",
+    "expiry": "",
+    "broker": "860523d1a4312e77",
+    "x": 720,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "1848378132dcd185",
+    "type": "firebase modify",
+    "z": "5aaaa13.ece6d6",
+    "name": "Data1 Set()",
+    "firebaseconfig": "",
+    "childpath": "Test/data/Data1",
+    "method": "set",
+    "value": "msg.payload",
+    "priority": "msg.priority",
+    "x": 950,
+    "y": 160,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "60af5017d9372be1",
+    "type": "firebase.on",
+    "z": "5aaaa13.ece6d6",
+    "name": "Data1 On()",
+    "firebaseconfig": "",
+    "childpath": "Test/data/Data1",
+    "atStart": true,
+    "eventType": "value",
+    "queries": [],
+    "x": 520,
+    "y": 140,
+    "wires": [
+      [
+        "5fb399a3dc80f928",
+        "8d6af314b5b0b6e6",
+        "b5d8637b22e6ef48"
+      ]
+    ]
+  },
+  {
+    "id": "5fb399a3dc80f928",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "Database Fetch",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "32e40e30db1e1103",
+    "type": "mqtt in",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "topic": "device2/relay1",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "860523d1a4312e77",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 730,
+    "y": 180,
+    "wires": [
+      [
+        "d9fbd4b3ab59ae4a",
+        "1848378132dcd185"
+      ]
+    ]
+  },
+  {
+    "id": "5eac95b7612daceb",
+    "type": "mqtt in",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "topic": "/test",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "860523d1a4312e77",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 470,
+    "y": 320,
+    "wires": [
+      [
+        "2c68020dfcd97b25",
+        "109add90933f8935",
+        "66cdd9176f8cedac"
+      ]
+    ]
+  },
+  {
+    "id": "2c68020dfcd97b25",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "Power Recieved",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 720,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "66cdd9176f8cedac",
+    "type": "firebase modify",
+    "z": "5aaaa13.ece6d6",
+    "name": "Current Push()",
+    "firebaseconfig": "",
+    "childpath": "/Test/Current",
+    "method": "push",
+    "value": "msg.payload",
+    "priority": "msg.priority",
+    "x": 720,
+    "y": 360,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "109add90933f8935",
+    "type": "ui_gauge",
+    "z": "5aaaa13.ece6d6",
+    "name": "Power",
+    "group": "7ccde2ba.796d34",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Power",
+    "label": "Watt",
+    "format": "{{value}}",
+    "min": 0,
+    "max": "130",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "className": "",
+    "x": 910,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "3371e7a8b34f5c76",
+    "type": "inject",
+    "z": "5aaaa13.ece6d6",
+    "name": "test",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "100",
+    "payloadType": "num",
+    "x": 470,
+    "y": 380,
+    "wires": [
+      [
+        "66cdd9176f8cedac"
+      ]
+    ]
+  },
+  {
+    "id": "b15272c06fc40d8d",
+    "type": "firebase.on",
+    "z": "5aaaa13.ece6d6",
+    "name": "second On()",
+    "firebaseconfig": "",
+    "childpath": "/Test/Time/second",
+    "atStart": true,
+    "eventType": "value",
+    "queries": [],
+    "x": 470,
+    "y": 420,
+    "wires": [
+      [
+        "b8e7d7cd1b628dac"
+      ]
+    ]
+  },
+  {
+    "id": "37c70fd73d3b59f7",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "Realy Fatched",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 880,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "8d6af314b5b0b6e6",
+    "type": "function",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "func": "var i = parseInt(msg.payload,10);\nif(i==1)\n{\n   global.set(\"realy1\",i);\n}\nelse\n{\n    global.set(\"realy1\",i);\n}\n return msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 660,
+    "y": 420,
+    "wires": [
+      [
+        "37c70fd73d3b59f7"
+      ]
+    ]
+  },
+  {
+    "id": "b8e7d7cd1b628dac",
+    "type": "function",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "func": "var data = msg.payload;\nvar i = global.get(\"realy1\");\nif( i == 1)\n{\n    var j = parseInt(data,10);\n    j = j+3; \n    msg={payload : j , topic : \"data\"};\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 540,
+    "y": 480,
+    "wires": [
+      [
+        "f30873d98955d051"
+      ]
+    ]
+  },
+  {
+    "id": "1fa6a7aaa410afb7",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "Time Got",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "345f313e23d0bcc9",
+    "type": "firebase modify",
+    "z": "5aaaa13.ece6d6",
+    "name": "Second Set()",
+    "firebaseconfig": "",
+    "childpath": "/Test/Time/second",
+    "method": "set",
+    "value": "msg.payload",
+    "priority": "msg.priority",
+    "x": 870,
+    "y": 560,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f30873d98955d051",
+    "type": "delay",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "3000",
+    "timeoutUnits": "milliseconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 680,
+    "y": 520,
+    "wires": [
+      [
+        "345f313e23d0bcc9",
+        "1fa6a7aaa410afb7"
+      ]
+    ]
+  },
+  {
+    "id": "4c285641e7dd0e7a",
+    "type": "function",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "func": "var data = msg.payload;\nvar j = parseInt(data,10);\nvar i = global.get(\"realy1\");\nif(j>=1 && i==1)\n{\n    j = j-1;\n    msg={payload : j , topic : \"data\"};\n    return msg;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 720,
+    "y": 680,
+    "wires": [
+      [
+        "53706925a5c8e4f2",
+        "12605e21b39d8cbd"
+      ]
+    ]
+  },
+  {
+    "id": "0f337b1d167fb753",
+    "type": "delay",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 620,
+    "y": 580,
+    "wires": [
+      [
+        "4c285641e7dd0e7a"
+      ]
+    ]
+  },
+  {
+    "id": "1516a0486f735642",
+    "type": "firebase.on",
+    "z": "5aaaa13.ece6d6",
+    "name": "setTimer On()",
+    "firebaseconfig": "",
+    "childpath": "/Test/Timer/settimer",
+    "atStart": true,
+    "eventType": "value",
+    "queries": [],
+    "x": 450,
+    "y": 560,
+    "wires": [
+      [
+        "58fc93bc0a2a536e",
+        "0f337b1d167fb753"
+      ]
+    ]
+  },
+  {
+    "id": "12605e21b39d8cbd",
+    "type": "firebase modify",
+    "z": "5aaaa13.ece6d6",
+    "name": "setTimer Set()",
+    "firebaseconfig": "",
+    "childpath": "/Test/Timer/settimer",
+    "method": "set",
+    "value": "msg.payload",
+    "priority": "msg.priority",
+    "x": 880,
+    "y": 620,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "58fc93bc0a2a536e",
+    "type": "function",
+    "z": "5aaaa13.ece6d6",
+    "name": "",
+    "func": "var data = msg.payload;\nvar j = parseInt(data,10);\nif(j==0)\n{\n    msg={payload : j , topic : \"data\"};\n    return msg;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 720,
+    "wires": [
+      [
+        "be8bbdbb8fc7a438",
+        "389544ff0efede0d"
+      ]
+    ]
+  },
+  {
+    "id": "be8bbdbb8fc7a438",
+    "type": "firebase modify",
+    "z": "5aaaa13.ece6d6",
+    "name": "Data1 Set()",
+    "firebaseconfig": "",
+    "childpath": "Test/data/Data1",
+    "method": "set",
+    "value": "0",
+    "priority": "msg.priority",
+    "x": 890,
+    "y": 740,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "53706925a5c8e4f2",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "Timmer Fetched",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "389544ff0efede0d",
+    "type": "debug",
+    "z": "5aaaa13.ece6d6",
+    "name": "Timmer Stoped",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "4120bc84.e1bb74",
+    "type": "ui_group",
+    "name": "Controls",
+    "tab": "dbf2452e.b49af",
+    "order": 1,
+    "disp": true,
+    "width": "6",
+    "collapse": false
+  },
+  {
+    "id": "b3f430bae7c63883",
+    "type": "mqtt-broker",
+    "name": "Test Mqtt",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "willMsg": {},
+    "sessionExpiry": ""
+  },
+  {
+    "id": "860523d1a4312e77",
+    "type": "mqtt-broker",
+    "name": "test5",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "willMsg": {},
+    "sessionExpiry": ""
+  },
+  {
+    "id": "7ccde2ba.796d34",
+    "type": "ui_group",
+    "name": "Monitor",
+    "tab": "dbf2452e.b49af",
+    "order": 2,
+    "disp": true,
+    "width": "6",
+    "collapse": false
+  },
+  {
+    "id": "dbf2452e.b49af",
+    "type": "ui_tab",
+    "name": "ESP8266",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false
+  }
+]
